@@ -2,7 +2,7 @@
  
 A small, runnable demo showing how a knowledge graph plus vector search retrieves context that pure vector RAG misses. Five Python scripts, one Cypher query, about 30 minutes from clone to working query.
  
-This is the companion repo to my blog post, [Why your RAG pipeline keeps hallucinating, and what one Cypher query can do about it](https://your-blog-link-here).
+This is the companion repo to my blog post, [Why your RAG pipeline keeps hallucinating, and what one Cypher query can do about it](https://docs.google.com/document/d/1sY_1e_hF3LK1MuBRLkZz7iWPLJQZWEWv1v6CoBp4yD8/edit?usp=sharing).
  
 ## What this shows
  
@@ -69,28 +69,28 @@ You should see `Ollama is running`.
 The scripts are numbered, run them in order.
  
 ```bash
-python 01_seed_graph.py     # Creates the toy knowledge graph
-python 02_create_index.py   # Creates the 768-dim vector index
-python 03_embed.py          # Embeds every chunk with Ollama
-python 04_ask.py            # Runs the GraphRAG retrieval query
+python3 01_seed_graph.py     # Creates the toy knowledge graph
+python3 02_create_index.py   # Creates the 768-dim vector index
+python3 03_embed.py          # Embeds every chunk with Ollama
+python3 04_ask.py            # Runs the GraphRAG retrieval query
 ```
  
 The last script asks "What did the team that built Project Atlas ship?" and prints the top 3 chunks the graph-aware retriever returned. Output looks like this:
  
 ```
 Question: What did the team that built Project Atlas ship?
- 
-[score 0.712] Priya Shah on Project Atlas
+
+[score 0.781] Priya Shah on Project Atlas
   Document: Atlas Q1 recap
-  Chunk: Last quarter the Atlas team shipped the new ingestion pipeline...
- 
-[score 0.684] Marco Ribeiro on Project Atlas
+  Chunk: Last quarter the Atlas team shipped the new ingestion pipeline and cut average latency from 800ms to 120ms.
+
+[score 0.776] Marco Ribeiro on Project Atlas
   Document: Atlas postmortem notes
-  Chunk: Marco led the debugging effort on the memory leak...
- 
-[score 0.588] Priya Shah on Project Atlas
-  Document: Atlas roadmap
-  Chunk: The Atlas roadmap for next quarter focuses on multi-region failover...
+  Chunk: Marco led the debugging effort on the memory leak that blocked the March release of Atlas.
+
+[score 0.739] Aisha Khan on Project Beacon
+  Document: Beacon launch notes
+  Chunk: Beacon went live in production on April 2 and currently handles about 4000 requests per second at peak.
 ```
  
 Notice how the top results all come back attributed to the right project and the right people, even though the question never named them. That is the graph traversal doing its job.
