@@ -70,6 +70,13 @@ The scripts are numbered, run them in order.
  
 ```bash
 python3 01_seed_graph.py     # Creates the toy knowledge graph
+```
+Hop into Neo4j Browser and run `MATCH (n) RETURN n LIMIT 50` to see the graph that was just created:
+
+![Knowledge graph in Neo4j Browser](https://github.com/user-attachments/assets/2b33f978-733f-4651-8732-181c201405e2)
+
+
+```bash
 python3 02_create_index.py   # Creates the 768-dim vector index
 python3 03_embed.py          # Embeds every chunk with Ollama
 python3 04_ask.py            # Runs the GraphRAG retrieval query
