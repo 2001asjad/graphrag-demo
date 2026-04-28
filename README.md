@@ -127,6 +127,3 @@ This repo stops at retrieval. To close the RAG loop, take the `records` returned
 - [Neo4j vector index docs](https://neo4j.com/docs/cypher-manual/current/indexes/semantic-indexes/vector-indexes/)
 - [neo4j-graphrag Python package](https://pypi.org/project/neo4j-graphrag/), a production-ready wrapper around this pattern
 - [GraphAcademy: Neo4j and LLM Fundamentals](https://graphacademy.neo4j.com/courses/llm-fundamentals/), a free course that walks through the full pipeline
-## License
- 
-MIT
